@@ -6,7 +6,7 @@ import java.io.PrintStream;
 
 public class TestMyTestClass {
 
-    @Test
+    
     public void testSayHello() {
         OutputStream os = new ByteArrayOutputStream();
         PrintStream stream = new PrintStream(os, true);
@@ -17,7 +17,7 @@ public class TestMyTestClass {
         assertThat(os.toString(), is(equalTo(String.format("%s%s", Hello.HELLO, System.lineSeparator()))));
     }
 
-    @Test
+    
     public void testSayHelloAFewTimes() {
         OutputStream os = new ByteArrayOutputStream();
         PrintStream stream = new PrintStream(os, true);
