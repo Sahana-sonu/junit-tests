@@ -1,42 +1,30 @@
 package de.syngenio.demo;
 
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 public class TestMyTestClass {
 
-	private MyTestClass _testObject;
+    @Test
+    public void testSayHello() {
+        OutputStream os = new ByteArrayOutputStream();
+        PrintStream stream = new PrintStream(os, true);
 
-	@BeforeEach
-	public void setUp() {
-		_testObject = new MyTestClass();
-	}
+        Hello hi = new Hello();
+        hi.sayHello(stream);
 
-	@Test
-	public void assureThatDoSomethingReturnsLowValueInts() {
-		int returned = _testObject.doSomething("", 0);
-		assertThat(returned, is(0));
-		returned = _testObject.doSomething("", 9);
-		assertThat(returned, is(9));
-		returned = _testObject.doSomething("", Integer.MIN_VALUE);
-		assertThat(returned, is(Integer.MIN_VALUE));
-	}
+        assertThat(os.toString(), is(equalTo(String.format("%s%s", Hello.HELLO, System.lineSeparator()))));
+    }
 
-	@Test
-	public void assureThatDoSomethingReturnsParsedStringForHighParam2Values() {
-		int returned = _testObject.doSomething("1234", 10);
-		assertThat(returned, is(1234));
-		returned = _testObject.doSomething("4567", Integer.MAX_VALUE);
-		assertThat(returned, is(4567));
-	}
+    @Test
+    public void testSayHelloAFewTimes() {
+        OutputStream os = new ByteArrayOutputStream();
+        PrintStream stream = new PrintStream(os, true);
 
-	@Test
-	public void assureThatDoSomethingThrowsExceptionForNonParseableString() {
-		assertThrows(NumberFormatException.class, () -> 
-		_testObject.doSomething("+-*~", 10));
-	}
+        Hello hi = new Hello();
+        hi.setTimes(3);
+        hi.sayHello(stream);
+
+        // Does it say "Hello!" three times?
+        String goal = String.format("%1$s%2$s%1$s%2$s%1$s%2$s", Hello.HELLO, System.lineSeparator());
+        assertThat(os.toString(), is(equalTo(goal)));
+    }
 }
