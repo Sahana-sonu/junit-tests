@@ -1,7 +1,7 @@
 // basic testing
 package de.syngenio.demo;
 import java.io.PrintStream;
-public class MyTestClass {
+public class Hello {
 
     static final String HELLO = "Hello!";
 
