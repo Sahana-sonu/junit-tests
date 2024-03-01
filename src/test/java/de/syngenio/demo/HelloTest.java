@@ -4,7 +4,7 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 
 
-public class TestMyTestClass {
+public class HelloTest {
 
     
     public void testSayHello() {
@@ -27,7 +27,7 @@ public class TestMyTestClass {
         hi.sayHello(stream);
 
         // Does it say "Hello!" three times?
-        String goal = String.format("%1$s%2$s%1$s%2$s%1$s%2$s", Hello.HELLO, System.lineSeparator());
-        assertThat(os.toString(), is(equalTo(goal)));
+       String goal = String.format("%1$s%2$s%1$s%2$s%1$s%2$s", Hello.HELLO, System.lineSeparator());
+       assertThat(os.toString(), is(equalTo(goal)));
     }
 }
