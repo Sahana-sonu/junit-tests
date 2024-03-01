@@ -1,4 +1,7 @@
 package de.syngenio.demo;
+import java.io.ByteArrayOutputStream;
+import java.io.OutputStream;
+import java.io.PrintStream;
 
 
 public class TestMyTestClass {
